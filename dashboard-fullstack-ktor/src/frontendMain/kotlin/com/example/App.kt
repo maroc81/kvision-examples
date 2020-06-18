@@ -1,13 +1,13 @@
 package com.example
 
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import pl.treksoft.kvision.Application
-import pl.treksoft.kvision.html.Span
+import pl.treksoft.kvision.html.main
 import pl.treksoft.kvision.i18n.DefaultI18nManager
 import pl.treksoft.kvision.i18n.I18n
 import pl.treksoft.kvision.panel.root
+import pl.treksoft.kvision.panel.stackPanel
 import pl.treksoft.kvision.startApplication
+import pl.treksoft.kvision.utils.perc
 
 class App : Application() {
 
@@ -20,10 +20,22 @@ class App : Application() {
                 )
             )
         val root = root("kvapp") {
-        }
-        GlobalScope.launch {
-            val pingResult = Model.ping("Hello world from client!")
-            root.add(Span(pingResult))
+            minHeight = 100.perc
+            height = 100.perc
+            add(NavTop())
+            add(NavSide())
+            main(classes = setOf("col-md-9", "ml-sm-auto", "col-lg-10", "px-md-4")) {
+                // The main contents of the dashboard is a stack panel
+                // The route specifies what link will load the item from the stack
+                val panel = stackPanel {
+                    // Add status panel with default route to root of site
+                    add(StatusPanel(), route = "/")
+                    // Additional panels should specify a route that matches the link in the NavSide
+                    // Note that the route here does not include #! but must be included in the nav link
+                    // to connect the link to the routing
+                    // add(DetailsPanel(), route = "/details")
+                }
+            }
         }
     }
 }

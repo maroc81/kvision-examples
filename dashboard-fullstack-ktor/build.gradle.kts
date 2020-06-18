@@ -126,6 +126,9 @@ kotlin {
                 implementation("commons-codec:commons-codec:$commonsCodecVersion")
                 implementation("com.axiomalaska:jdbc-named-parameters:$jdbcNamedParametersVersion")
                 implementation("com.github.andrewoma.kwery:core:$kweryVersion")
+
+                // OSHI library for accessing system information
+                implementation("com.github.oshi:oshi-core:5.1.2")
             }
         }
         val backendTest by getting {

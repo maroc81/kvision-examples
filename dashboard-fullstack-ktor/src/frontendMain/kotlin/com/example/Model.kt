@@ -2,10 +2,7 @@ package com.example
 
 object Model {
 
-    private val pingService = PingService()
+    private val oshiService = OshiService()
 
-    suspend fun ping(message: String): String {
-        return pingService.ping(message)
-    }
-
+    suspend fun getSystemInfoModel() = oshiService.getSystemInfoModel()
 }

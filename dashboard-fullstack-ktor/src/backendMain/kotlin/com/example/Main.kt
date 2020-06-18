@@ -12,6 +12,6 @@ fun Application.main() {
     kvisionInit()
 
     routing {
-        applyRoutes(PingServiceManager)
+        applyRoutes(OshiServiceManager)
     }
 }
